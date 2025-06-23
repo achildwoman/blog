@@ -3,6 +3,7 @@ import { getSortedPostsMeta, getPostBySlug } from '../../lib/posts';
 import { Post } from '../../lib/posts';
 import { remark } from 'remark';
 import html from 'remark-html';
+import Link from 'next/link';
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const posts = getSortedPostsMeta();
@@ -34,7 +35,7 @@ export default function PostPage({ post }: { post: Post & { contentHtml: string 
       <div style={{ color: '#888', fontSize: 14 }}>{post.date}</div>
       <article style={{ marginTop: 32 }} dangerouslySetInnerHTML={{ __html: post.contentHtml }} />
       <div style={{ marginTop: 32 }}>
-        <a href="/">← 回到首頁</a>
+        <Link href="/">← 回到首頁</Link>
       </div>
     </div>
   );
